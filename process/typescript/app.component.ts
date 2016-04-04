@@ -1,20 +1,22 @@
 import {Component} from 'angular2/core';
-
-interface Artist {
-    name: string;
-    shortname: string;
-    reknown: string;
-    bio: string;
-}
+import {Artist} from './artist';
+import {ArtistItemComponent} from './artist-item.component';
+import {ArtistDetailsComponent} from './artist-details.component';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'partials/app.html',
+  directives: [ArtistItemComponent, ArtistDetailsComponent],
   styleUrls: ['css/app.css']
 })
 
 export class AppComponent {
   artists = ARTISTS;
+  currentArtist: Artist;
+
+  showArtist(item) {
+    this.currentArtist = item;
+  }
 }
 
 var ARTISTS: Artist[] = [
